@@ -34,6 +34,7 @@ class CreatePersonasTable extends Migration
             $table->enum('tipo', ['empleador', 'empleado','administrador']);
             $table->enum('estado', ['activo', 'inactivo']);
             $table->enum('sancion', ['activo', 'inactivo']);
+            $table->enum('estadoRegistro', ['aprobado', 'denegado','espera'])->nullable();
             
             $table->timestamps();
         });

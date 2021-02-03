@@ -15,8 +15,8 @@ class CreateSancionsTable extends Migration
     {
         Schema::create('sancions', function (Blueprint $table) {
             $table->id();
-            $table->date('fechaInicio')->format('d/m/Y');
-            $table->date('fechaFin')->format('d/m/Y');
+            $table->date('fechaInicio');
+            $table->date('fechaFin');
             $table->smallInteger('cantidadDias');            
             $table->string('justificacion');
             $table->enum('estado', ['activo', 'inactivo']);
