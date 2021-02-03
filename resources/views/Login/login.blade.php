@@ -13,13 +13,29 @@
 
 <body>
     <div class="login-dark">
-        <form method="post">
+        <form method="post" action="{{url('login')}}">
+            <div class="container">
+                <hr>
+                @if (session()->has('flash'))
+                <b class="alert alert-info">{{session('flash')}}</b>
+                @endif
+            </div>
+            <!-- inicio del formulario -->
+            @csrf
             <h2 class="sr-only">Login Form</h2>
             <div class="illustration"><i class="icon ion-ios-locked-outline"></i></div>
-            <div class="form-group"><input class="form-control" type="email" name="email" placeholder="Email"></div>
-            <div class="form-group"><input class="form-control" type="password" name="password" placeholder="Password"></div>
+            <div class="form-group {{ $errors->has('email')? 'has-error': ''}}">
+                <input class="form-control" type="email" name="email" placeholder="Email">
+                {!! $errors->first('email','<span class="help-block">:message</span>') !!}
+            </div>
+            <div class="form-group {{ $errors->has('password')? 'has-error': ''}}">
+                <input class="form-control" type="password" name="password" placeholder="Password">
+                {!! $errors->first('password','<span class="help-block">:message</span>') !!}
+            </div>
             <div class="form-group"><button class="btn btn-primary btn-block" type="submit">Log In</button></div>
-            <a href="{{route('sidebar')}}" class="forgot">Forgot your email or password?</a>
+            <a href="#" class="forgot">Forgot your email or password?</a>
+
+            <!-- fin del formulario -->
         </form>
     </div>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>

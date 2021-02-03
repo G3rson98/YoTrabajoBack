@@ -1,4 +1,3 @@
-
 <!-- Main Sidebar Container -->
 <aside class="main-sidebar sidebar-dark-primary elevation-4">
     <!-- Brand Logo -->
@@ -20,7 +19,7 @@
         </div>
 
         <!-- SidebarSearch Form -->
-        <div class="form-inline">
+        <!-- <div class="form-inline">
             <div class="input-group" data-widget="sidebar-search">
                 <input class="form-control form-control-sidebar" type="search" placeholder="Search" aria-label="Search">
                 <div class="input-group-append">
@@ -29,32 +28,32 @@
                     </button>
                 </div>
             </div>
-        </div>
+        </div> -->
 
         <!-- Sidebar Menu -->
         <nav class="mt-2">
             <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
                 <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
-                <li class="nav-item menu-open">
-                    <a href="#" class="nav-link active">
-                        <i class="nav-icon fas fa-tachometer-alt"></i>
+                <li class="nav-item">
+                    <a href="#" class="nav-link">
+                        <i class="nav-icon fas fa-users"></i>                        
                         <p>
-                            Starter Pages
+                            Gestion de Usuarios
                             <i class="right fas fa-angle-left"></i>
                         </p>
                     </a>
                     <ul class="nav nav-treeview">
                         <li class="nav-item">
-                            <a href="#" class="nav-link active">
-                                <i class="fas fa-circle nav-icon"></i>
-                                <p>Active Page</p>
+                            <a href="{{route('empleado.index')}}" class="nav-link">                                
+                                <i class="fas fa-hammer nav-icon"></i>
+                                <p>Empleados</p>
                             </a>
                         </li>
                         <li class="nav-item">
                             <a href="#" class="nav-link">
-                                <i class="fas fa-circle nav-icon"></i>
-                                <p>Inactive Page</p>
+                            <i class="fas fa-handshake nav-icon"></i>
+                                <p>Contratantes</p>
                             </a>
                         </li>
                     </ul>
@@ -67,6 +66,14 @@
                             <span class="right badge badge-danger">New</span>
                         </p>
                     </a>
+                </li>
+                <li class="nav-item">
+                    <form action="{{route('logout')}}" method="POST">
+                    @csrf
+                        <div class="col text-center">
+                            <button type="submit" class="btn btn-danger">Cerrar sesion</button>
+                        </div>
+                    </form>
                 </li>
             </ul>
         </nav>

@@ -38,6 +38,7 @@
 
 
     <script src="/js/app.js"></script>
+    <script src="https://adminlte.io/themes/v3/plugins/daterangepicker/daterangepicker.js"></script>
     
     @yield('js')
 
