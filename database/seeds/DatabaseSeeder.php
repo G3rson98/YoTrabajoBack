@@ -26,8 +26,8 @@ class DatabaseSeeder extends Seeder
                 'fechaNacimiento' => '02/03/1998',
                 'fechaRegistro' => '01/02/2021',
                 'tipo' => 'empleado',
-                'sancion'=> 'inactivo',
-                'estado'=>'activo'
+                'sancion' => 'inactivo',
+                'estado' => 'activo'
             ]
         );
         DB::table('personas')->insert(
@@ -41,8 +41,8 @@ class DatabaseSeeder extends Seeder
                 'fechaNacimiento' => '02/03/1998',
                 'fechaRegistro' => '01/02/2021',
                 'tipo' => 'empleado',
-                'sancion'=> 'inactivo',
-                'estado'=>'activo'
+                'sancion' => 'inactivo',
+                'estado' => 'activo'
             ]
         );
         DB::table('personas')->insert(
@@ -56,12 +56,12 @@ class DatabaseSeeder extends Seeder
                 'fechaNacimiento' => '02/03/1998',
                 'fechaRegistro' => '01/02/2021',
                 'tipo' => 'empleado',
-                'sancion'=> 'inactivo',
-                'estado'=>'activo'
+                'sancion' => 'inactivo',
+                'estado' => 'activo'
             ]
         );
         DB::table('personas')->insert(
-            [                
+            [
                 'ci' => '6263473',
                 'nombre' => 'Gerson',
                 'apellidoP' => 'Oliva',
@@ -71,12 +71,12 @@ class DatabaseSeeder extends Seeder
                 'fechaNacimiento' => '02/03/1998',
                 'fechaRegistro' => '01/02/2021',
                 'tipo' => 'empleado',
-                'sancion'=> 'inactivo',
-                'estado'=>'activo'
+                'sancion' => 'inactivo',
+                'estado' => 'activo'
             ]
         );
         DB::table('personas')->insert(
-            [                
+            [
                 'ci' => '6263473',
                 'nombre' => 'Gerson',
                 'apellidoP' => 'Oliva',
@@ -86,12 +86,12 @@ class DatabaseSeeder extends Seeder
                 'fechaNacimiento' => '02/03/1998',
                 'fechaRegistro' => '01/02/2021',
                 'tipo' => 'empleado',
-                'sancion'=> 'inactivo',
-                'estado'=>'activo'
+                'sancion' => 'inactivo',
+                'estado' => 'activo'
             ]
         );
         DB::table('personas')->insert(
-            [                
+            [
                 'ci' => '6263473',
                 'nombre' => 'Gerson',
                 'apellidoP' => 'Oliva',
@@ -101,12 +101,12 @@ class DatabaseSeeder extends Seeder
                 'fechaNacimiento' => '02/03/1998',
                 'fechaRegistro' => '01/02/2021',
                 'tipo' => 'empleado',
-                'sancion'=> 'inactivo',
-                'estado'=>'activo'
+                'sancion' => 'inactivo',
+                'estado' => 'activo'
             ]
         );
         DB::table('personas')->insert(
-            [                
+            [
                 'ci' => '6263473',
                 'nombre' => 'Gerson',
                 'apellidoP' => 'Oliva',
@@ -116,12 +116,12 @@ class DatabaseSeeder extends Seeder
                 'fechaNacimiento' => '02/03/1998',
                 'fechaRegistro' => '01/02/2021',
                 'tipo' => 'empleado',
-                'sancion'=> 'inactivo',
-                'estado'=>'activo'
+                'sancion' => 'inactivo',
+                'estado' => 'activo'
             ]
         );
         DB::table('personas')->insert(
-            [                
+            [
                 'ci' => '6263473',
                 'nombre' => 'Gerson',
                 'apellidoP' => 'Oliva',
@@ -131,11 +131,11 @@ class DatabaseSeeder extends Seeder
                 'fechaNacimiento' => '02/03/1998',
                 'fechaRegistro' => '01/02/2021',
                 'tipo' => 'empleado',
-                'sancion'=> 'inactivo',
-                'estado'=>'activo'
+                'sancion' => 'inactivo',
+                'estado' => 'activo'
             ]
         );
-        
+
         DB::table('users')->insert([
             'email' => 'admin@hotmail.com',
             'password' => Hash::make('admin')
@@ -147,6 +147,18 @@ class DatabaseSeeder extends Seeder
             'cantidadDias' => '30',
             'justificacion' => 'se robo un chocolate',
             'estado' => 'activo'
+        ]);
+        DB::table('oficios')->insert([
+            'nombre' => 'Carpinteria',
+        ]);
+        DB::table('oficios')->insert([
+            'nombre' => 'Plomeria',
+        ]);
+        DB::table('oficios')->insert([
+            'nombre' => 'Albañileria',
+        ]);
+        DB::table('oficios')->insert([
+            'nombre' => 'Jardineria',
         ]);
     }
 }

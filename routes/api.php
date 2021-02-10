@@ -22,3 +22,7 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 Route::prefix('empleado')->group( function (){
     Route::post('registrar', 'API\ApiEmpleadoController@store');    
 });
+
+Route::prefix('oficio')->group( function (){
+    Route::get('index', 'API\ApiOficioController@index');    
+});
