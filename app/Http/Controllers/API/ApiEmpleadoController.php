@@ -37,7 +37,7 @@ class ApiEmpleadoController extends Controller
      */
     public function store(Request $request)
     {
-        //
+
         $persona= new Persona();
         $persona->ci= $request->ci;
         $persona->nombre= $request->nombre;
@@ -46,22 +46,60 @@ class ApiEmpleadoController extends Controller
         $persona->direccion= $request->direccion;
         $persona->telefono= $request->telefono;
         $persona->fechaNacimiento= $request->fechaNacimiento;
-        $persona->fechaRegistro= $request->fechaRegistro;
+        $persona->fechaRegistro= '03-02-2021';
         $persona->foto= $request->foto;
         $persona->longitud= $request->longitud;
         $persona->latitud= $request->latitud;
-        $persona->calificacionPromedio= $request->calificacionPromedio;
-        $persona->fotoCi= $request->fotoCi;
-        $persona->fotoAntecedentesPenales= $request->fotoAntecedentesPenales;
-        $persona->fotoSelfieCi= $request->fotoSelfieCi;
+        //$persona->calificacionPromedio= 0;
         $persona->tipo= 'empleado';
         $persona->estado= 'activo';
         $persona->sancion= 'inactivo';
         $persona->estadoRegistro= 'espera';
-        $persona->save();
-
-        return response()->json(array('exito'=>true,'data'=>$persona));
+        $persona->fotoCi= $request->fotoCi;
+        $persona->fotoAntecedentesPenales= $request->fotoAntecedentesPenales;
+        $persona->fotoSelfieCi= $request->fotoSelfieCi;
         
+        $persona->save();
+        return response()->json($persona);
+        
+    }
+
+    public function cargarFoto(Request $request)
+    {   
+        
+        if ($request->hasFile('fotoCi')) {
+            $file = $request->file('fotoCi');
+            $filename = $file->getClientOriginalName();
+            $filename = pathinfo($filename,PATHINFO_FILENAME);
+            $name_file = str_replace(" ","_",$filename);
+            $extension = $file->getClientOriginalExtension();
+            $picture = date('His').'-'.$name_file.'.'.$extension;
+            $file->move(public_path('Files/'),$picture);
+            return response()->json(array('exito'=>true,'direccion'=>$picture));
+        }else
+        if ($request->hasFile('fotoAntecedentesPenales')) {
+            $file = $request->file('fotoAntecedentesPenales');
+            $filename = $file->getClientOriginalName();
+            $filename = pathinfo($filename,PATHINFO_FILENAME);
+            $name_file = str_replace(" ","_",$filename);
+            $extension = $file->getClientOriginalExtension();
+            $picture = date('His').'-'.$name_file.'.'.$extension;
+            $file->move(public_path('Files/'),$picture);
+            return response()->json(array('exito'=>true,'direccion'=>$picture));
+        }else
+
+        if ($request->hasFile('fotoSelfieCi')) {
+            $file = $request->file('fotoSelfieCi');
+            $filename = $file->getClientOriginalName();
+            $filename = pathinfo($filename,PATHINFO_FILENAME);
+            $name_file = str_replace(" ","_",$filename);
+            $extension = $file->getClientOriginalExtension();
+            $picture = date('His').'-'.$name_file.'.'.$extension;
+            $file->move(public_path('Files/'),$picture);
+            return response()->json(array('exito'=>true,'direccion'=>$picture));
+        }else{
+            return response()->json(array('exito'=>false));
+        }
     }
 
     /**

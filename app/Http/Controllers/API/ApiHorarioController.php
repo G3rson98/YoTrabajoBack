@@ -3,10 +3,10 @@
 namespace App\Http\Controllers\API;
 
 use App\Http\Controllers\Controller;
-use App\Oficio;
 use Illuminate\Http\Request;
+use App\Horario;
 
-class ApiOficioController extends Controller
+class ApiHorarioController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,8 +15,7 @@ class ApiOficioController extends Controller
      */
     public function index()
     {
-        $oficios= Oficio::get();
-        return response()->json($oficios);
+        //
     }
 
     /**
@@ -37,7 +36,15 @@ class ApiOficioController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        
+        $horario = new Horario();
+        $horario->idPersona = $request->idPersona;
+        $horario->idOficio = $request->idOficio;
+        $horario->dias = $request->dias;
+        $horario->horaInicio = $request->horaInicio;
+        $horario->horaFin = $request->horaFin;
+        $horario->save();
+        return response()->json($horario);
     }
 
     /**

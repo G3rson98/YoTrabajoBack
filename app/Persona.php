@@ -32,5 +32,10 @@ class Persona extends Model
         return $this->hasMany(sancion::class);
     }
 
+    public function horarios()
+    {
+        return $this->hasMany(Horario::class);
+    }
+
 
 }

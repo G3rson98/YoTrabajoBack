@@ -37,3 +37,9 @@ Route::prefix('empleado')->group( function (){
     Route::get('index', 'EmpleadoController@index')->name('empleado.index');
     Route::get('destroy/{id}', 'EmpleadoController@destroy')->name('empleado.destroy');    
 });
+
+
+
+Route::get('/prueba',function(){
+    return view('persona.empleado.profile');
+});
