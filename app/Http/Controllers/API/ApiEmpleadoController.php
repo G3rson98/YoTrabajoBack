@@ -2,9 +2,12 @@
 
 namespace App\Http\Controllers\API;
 
+use App\Horario;
 use App\Http\Controllers\Controller;
+use App\Oficio;
 use App\Persona;
 use Illuminate\Http\Request;
+use Illuminate\Support\Arr;
 
 class ApiEmpleadoController extends Controller
 {
@@ -16,7 +19,8 @@ class ApiEmpleadoController extends Controller
     public function index()
     {
         // echo json_encode("Hello server");
-        return response()->json(array('exito'=>true));
+        $empleados= Persona::where('tipo','empleado')->get();
+        return response()->json($empleados);
     }
 
     /**
@@ -58,15 +62,15 @@ class ApiEmpleadoController extends Controller
         $persona->fotoCi= $request->fotoCi;
         $persona->fotoAntecedentesPenales= $request->fotoAntecedentesPenales;
         $persona->fotoSelfieCi= $request->fotoSelfieCi;
-        
+
         $persona->save();
         return response()->json($persona);
-        
+
     }
 
     public function cargarFoto(Request $request)
-    {   
-        
+    {
+
         if ($request->hasFile('fotoCi')) {
             $file = $request->file('fotoCi');
             $filename = $file->getClientOriginalName();
@@ -108,9 +112,32 @@ class ApiEmpleadoController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
+
+    // Schema::create('horarios', function (Blueprint $table) {
+    //     $table->id();
+    //     $table->unsignedBigInteger("idPersona");
+    //     $table->unsignedBigInteger("idOficio");
+    //     $table->string("dias");
+    //     $table->string("horaInicio");
+    //     $table->string("horaFin");
+    //     $table->foreign('idPersona')->references('id')->on('personas');
+    //     $table->foreign('idOficio')->references('id')->on('oficios');
+    //     $table->timestamps();
+    // });
+
     public function show($id)
     {
-        //
+        $persona = Persona ::findOrFail($id);
+        $horarios = Horario::where('idPersona',$id)->get();
+        $persona -> horario = $horarios;
+        $oficios = [];
+        foreach ($horarios as $key=>$value) {
+            $temp = Oficio::where('id',$value->idOficio)->first();
+            $oficios = Arr::add($oficios,$key,$temp);
+        }
+        $persona-> oficio = $oficios;
+        //return response()->file(public_path('Files/'.$persona->fotoAntecedentesPenales),);
+        return response()->json(array($persona));
     }
 
     /**
@@ -145,5 +172,21 @@ class ApiEmpleadoController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    //'aprobado', 'denegado','espera'
+    public function aprobar($id)
+    {
+        $persona= Persona ::findOrFail($id);
+        $persona->estadoRegistro='aprobado';
+        $persona->update();
+        return response()->json(true);
+    }
+    public function denegar($id)
+    {
+        $persona= Persona ::findOrFail($id);
+        $persona->estadoRegistro='denegado';
+        $persona->update();
+        return response()->json(true);
     }
 }
