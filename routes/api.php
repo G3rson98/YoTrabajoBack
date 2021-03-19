@@ -18,6 +18,8 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
 
+Route::post('/login','API\ApiEmpleadoController@login');
+
 
 Route::prefix('empleado')->group( function (){
     Route::get('index', 'API\ApiEmpleadoController@index');
@@ -26,12 +28,19 @@ Route::prefix('empleado')->group( function (){
     Route::post('cargarfoto', 'API\ApiEmpleadoController@cargarFoto');
     Route::get('denegar/{id}', 'API\ApiEmpleadoController@denegar');
     Route::get('aprobar/{id}', 'API\ApiEmpleadoController@aprobar');
+    Route::get('all', 'API\ApiEmpleadoController@all');
 });
 
 Route::prefix('oficio')->group( function (){
     Route::get('index', 'API\ApiOficioController@index');
+    Route::get('obtener/{id}', 'API\ApiEmpleadoController@oficioempleado');
 });
 
 Route::prefix('horario')->group( function (){
     Route::post('registrar', 'API\ApiHorarioController@store');
 });
+
+Route::prefix('trabajo')->group( function (){
+    Route::post('registrar', 'API\ApiEmpleadoController@crearTrabajo');
+});
+

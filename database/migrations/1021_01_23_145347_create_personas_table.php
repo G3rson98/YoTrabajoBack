@@ -30,7 +30,7 @@ class CreatePersonasTable extends Migration
             $table->string('fotoCi')->nullable();
             $table->string('fotoAntecedentesPenales')->nullable();
             $table->string('fotoSelfieCi')->nullable();
-
+            $table->text("token")->nullable();
             $table->enum('tipo', ['empleador', 'empleado','administrador']);
             $table->enum('estado', ['activo', 'inactivo']);
             $table->enum('sancion', ['activo', 'inactivo']);

@@ -37,9 +37,9 @@ class LoginController extends Controller
         $credentials =$this->validate(request(),$datos,$mensaje);
 
         if (Auth::attempt($credentials)) {
-            return redirect()->route('dashboard');
+            return response()->json($credentials);
         }
-        return back()->withErrors(['email'=>'Estas credenciales no coinciden con nuestros registros']);
+        //return back()->withErrors(['email'=>'Estas credenciales no coinciden con nuestros registros']);
     }
 
     public function logout()

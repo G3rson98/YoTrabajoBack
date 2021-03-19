@@ -35,16 +35,22 @@ class ApiHorarioController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
-    {
+    {   
         
-        $horario = new Horario();
-        $horario->idPersona = $request->idPersona;
-        $horario->idOficio = $request->idOficio;
-        $horario->dias = $request->dias;
-        $horario->horaInicio = $request->horaInicio;
-        $horario->horaFin = $request->horaFin;
-        $horario->save();
-        return response()->json($horario);
+        $horarios = $request->json("horarios");
+        $idPersona = $request->json("idPersona");
+        foreach ($horarios as $horario) {
+            $nuevo = new Horario();
+            $nuevo->idPersona = $idPersona;
+            $nuevo->idOficio = $horario["idOficio"];
+            $nuevo->dias = $horario["dias"];
+            $nuevo->horaInicio = $horario["horaInicio"];
+            $nuevo->horaFin = $horario["horaFin"];
+            $nuevo->save();
+        }
+        return response()->json(array("exito"=>true));
+        //return response()->json($request);
+        //return response()->json(array("id"=>$idPersona,"horarios"=>$horarios));
     }
 
     /**

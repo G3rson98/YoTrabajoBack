@@ -34,7 +34,7 @@ class DatabaseSeeder extends Seeder
             [
                 'ci' => '6263473',
                 'nombre' => 'Gerson',
-                'apellidoP' => 'Oliva',
+                'apellidoP' => 'Caricari',
                 'apellidoM' => 'Rojas',
                 'direccion' => 'Sevilla los jardines',
                 'telefono' => '77884965',
@@ -49,7 +49,7 @@ class DatabaseSeeder extends Seeder
             [
                 'ci' => '6263473',
                 'nombre' => 'Gerson',
-                'apellidoP' => 'Oliva',
+                'apellidoP' => 'Vargas',
                 'apellidoM' => 'Rojas',
                 'direccion' => 'Sevilla los jardines',
                 'telefono' => '77884965',
@@ -64,7 +64,7 @@ class DatabaseSeeder extends Seeder
             [
                 'ci' => '6263473',
                 'nombre' => 'Gerson',
-                'apellidoP' => 'Oliva',
+                'apellidoP' => 'Eid',
                 'apellidoM' => 'Rojas',
                 'direccion' => 'Sevilla los jardines',
                 'telefono' => '77884965',
@@ -79,7 +79,7 @@ class DatabaseSeeder extends Seeder
             [
                 'ci' => '6263473',
                 'nombre' => 'Gerson',
-                'apellidoP' => 'Oliva',
+                'apellidoP' => 'Valverde',
                 'apellidoM' => 'Rojas',
                 'direccion' => 'Sevilla los jardines',
                 'telefono' => '77884965',
@@ -94,7 +94,7 @@ class DatabaseSeeder extends Seeder
             [
                 'ci' => '6263473',
                 'nombre' => 'Gerson',
-                'apellidoP' => 'Oliva',
+                'apellidoP' => 'Murillo',
                 'apellidoM' => 'Rojas',
                 'direccion' => 'Sevilla los jardines',
                 'telefono' => '77884965',
